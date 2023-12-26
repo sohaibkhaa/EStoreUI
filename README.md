@@ -1,4 +1,4 @@
-# News App
+# E-Store UI
 
 An Android E-Store Main Screen UI implemented with Jetpack compose.
 

@@ -38,7 +38,7 @@ private const val TAG = "StoreScreen"
 @Composable
 fun StoreScreen() {
     val pagerState = rememberPagerState(0)
-    Column(modifier = Modifier) {
+    Column() {
         TopBar(
             modifier = Modifier
                 .padding(vertical = 10.dp, horizontal = 16.dp)
@@ -69,24 +69,23 @@ fun TopBar(modifier: Modifier = Modifier) {
 @Composable
 fun ProfileSection(modifier: Modifier = Modifier) {
     Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally
+        modifier = modifier, horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = R.drawable.ic_asus), contentDescription = "Logo",
+            painter = painterResource(id = R.drawable.ic_asus),
+            contentDescription = "Logo",
             modifier = Modifier
                 .size(80.dp)
                 .clip(RoundedCornerShape(12.dp))
                 .border(
-                    width = 4.dp,
-                    shape = RoundedCornerShape(12.dp),
-                    color = LightGrey
+                    width = 4.dp, shape = RoundedCornerShape(12.dp), color = LightGrey
                 )
                 .padding(4.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = "Top seller", fontSize = 12.sp,
+            text = "Top seller",
+            fontSize = 12.sp,
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier
                 .clip(RoundedCornerShape(4.dp))
@@ -107,8 +106,7 @@ fun ProfileSection(modifier: Modifier = Modifier) {
         )
         Spacer(modifier = Modifier.height(16.dp))
         Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+            modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center
         ) {
             Button(
                 onClick = { },
@@ -118,7 +116,8 @@ fun ProfileSection(modifier: Modifier = Modifier) {
                 Text(text = "Turn on", color = Color.White)
                 Spacer(modifier = Modifier.width(4.dp))
                 Icon(
-                    imageVector = Icons.Default.Notifications, contentDescription = "Notification",
+                    imageVector = Icons.Default.Notifications,
+                    contentDescription = "Notification",
                     tint = Color.White
                 )
             }
@@ -131,7 +130,8 @@ fun ProfileSection(modifier: Modifier = Modifier) {
                 Text(text = "Chat", color = DarkBlue)
                 Spacer(modifier = Modifier.width(4.dp))
                 Icon(
-                    imageVector = Icons.Outlined.Email, contentDescription = "Message",
+                    imageVector = Icons.Outlined.Email,
+                    contentDescription = "Message",
                     tint = DarkBlue
                 )
             }
@@ -161,8 +161,7 @@ fun Tabs(pagerState: PagerState) {
             Box(
                 Modifier
                     .customTabIndicatorOffset(
-                        tabPosition[selectedTabIndex],
-                        6.dp
+                        tabPosition[selectedTabIndex], 6.dp
                     )
                     .height(6.dp)
                     .clip(RoundedCornerShape(6.dp))
@@ -170,8 +169,7 @@ fun Tabs(pagerState: PagerState) {
             )
         },
         modifier = Modifier.border(
-            width = 1.dp,
-            color = Color.White
+            width = 1.dp, color = Color.White
         )
     ) {
         list.forEachIndexed { index, _ ->
@@ -197,26 +195,23 @@ fun Tabs(pagerState: PagerState) {
 
 @Composable
 fun Products(
-    products: List<Product>,
-    modifier: Modifier = Modifier
+    products: List<Product>, modifier: Modifier = Modifier
 ) {
     LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        contentPadding = PaddingValues(16.dp)
+        columns = GridCells.Fixed(2), contentPadding = PaddingValues(16.dp)
     ) {
         items(products.size) {
             Column(
                 modifier = Modifier
                     .padding(8.dp)
                     .background(
-                        color = LightGrey,
-                        shape = RoundedCornerShape(size = 16.dp)
+                        color = LightGrey, shape = RoundedCornerShape(size = 16.dp)
                     )
-                    .padding(8.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .padding(8.dp), horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AsyncImage(
-                    model = products[it].images[0], contentDescription = "Product image",
+                    model = products[it].images[0],
+                    contentDescription = "Product image",
                     modifier = Modifier
                         .height(140.dp)
                         .clip(RoundedCornerShape(16.dp))
@@ -228,29 +223,31 @@ fun Products(
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(
-                            color = Color.White,
-                            shape = RoundedCornerShape(size = 16.dp)
+                            color = Color.White, shape = RoundedCornerShape(size = 16.dp)
                         )
                         .padding(8.dp)
                 ) {
                     Text(
-                        text = products[it].name, fontSize = 16.sp, fontWeight = FontWeight.Bold,
+                        text = products[it].name,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
                         color = Color.Black
                     )
 
                     Spacer(modifier = Modifier.height(8.dp))
 
                     Text(
-                        text = products[it].brand, fontSize = 12.sp,
-                        color = Color.DarkGray
+                        text = products[it].brand, fontSize = 12.sp, color = Color.DarkGray
                     )
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Text(
-                            text = "$" + products[it].price, fontSize = 18.sp,
-                            color = Color.Black, fontWeight = FontWeight.Bold
+                            text = "$" + products[it].price,
+                            fontSize = 18.sp,
+                            color = Color.Black,
+                            fontWeight = FontWeight.Bold
                         )
                         Icon(
                             painter = painterResource(id = R.drawable.ic_arrow_forward),
@@ -259,15 +256,12 @@ fun Products(
                             modifier = Modifier
                                 .width(42.dp)
                                 .background(
-                                    color = Color(0xFFf2f8fd),
-                                    shape = RoundedCornerShape(16.dp)
+                                    color = Color(0xFFf2f8fd), shape = RoundedCornerShape(16.dp)
                                 )
                                 .padding(12.dp)
                         )
                     }
-
                 }
-
             }
         }
     }
